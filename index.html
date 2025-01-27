@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="assets/css/app.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+.snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}</style>
+    <title id="title">祝你 2025 新年快乐！</title>
+  </head>
+  <body
+    class="select-none w-screen h-screen overflow-hidden"
+    ondragstart="return false;"
+  >
+    <div
+      class="relative main z-50 flex flex-col justify-center items-center"
+      style="background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(3.2px)"
+      id="pre"
+    >
+      <div class="words text-white mb-6">点击按钮，查看 2025 年新年祝福</div>
+      <button onclick="startFireworks()" id="start-button">
+        V I E W
+        <div id="clip">
+          <div id="leftTop" class="corner"></div>
+          <div id="rightBottom" class="corner"></div>
+          <div id="rightTop" class="corner"></div>
+          <div id="leftBottom" class="corner"></div>
+        </div>
+        <span id="rightArrow" class="arrow"></span>
+        <span id="leftArrow" class="arrow"></span>
+      </button>
+      <div class="bottom-8 w-screen left-0 absolute text-white">
+        <div class="container mx-auto max-w-xl text-sm opacity-60">
+          <p>请在手机端打开哦，电脑可能会出现不知名bug(</p>
+          Made with ♥ by
+          <a href="//github.com/liyanqwq" target="_blank" nofollow noopener
+            >Li Yan</a
+          >
+        </div>
+        <div class="container mx-auto max-w-xl text-sm opacity-60">
+          Modified by
+          <a href="//baihw.cn" target="_blank" nofollow noopener
+            >Lingerbhw233</a
+          >
+        </div>
+
+      </div>
+    </div>
+    <div class="main z-30 flex justify-center items-center text-white">
+      <div class="words" id="typed"></div>
+    </div>
+    <div class="main z-20" id="fireworks"></div>
+    <div class="main z-10 bg-black">
+      <img id="img" src="./assets/media/img.png"></img>
+    </div>
+    <script src="https://npm.elemecdn.com/fireworks-js@2.x/dist/index.umd.js"></script>
+    <script
+      src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js"
+      type="application/javascript"
+    ></script>
+    <script>
+      const container = document.querySelector("#fireworks");
+      const img = document.getElementById("img");
+      const fireworks = new Fireworks.default(container, {
+        sound: {
+          enabled: true,
+          files: [
+            "assets/media/explosion0.mp3",
+            "assets/media/explosion1.mp3",
+            "assets/media/explosion2.mp3",
+          ],
+        },
+      });
+      var typed_options = {
+        strings: [
+          "你好呀，朋友、家人、老师、亦或是陌生人",
+          "无论你是谁，无论你身在何处。",
+          "既然点进了这里，那么请接受我的祝福！",
+          "新的一年，愿笑声常伴，温暖常在",
+          "新的一年，愿阖家欢乐，万事如意",
+          "新的一年，愿健康永随，平安永驻",
+          "一元复始，旭日始旦，愿尔祯祥，岁岁如常。",
+          "最后，再次祝大家2025年春节快乐！",
+        ],
+        typeSpeed: 200,
+        backSpeed: 100,
+        smartBackspace: false,
+        onComplete: () => {
+          //展示图片
+          img.style.visibility = "visible";
+        },
+      };
+      function startFireworks() {
+        document.getElementById("pre").style.display = "none";
+        fireworks.start();
+        var typed = new Typed("#typed", typed_options);
+        //播放背景音乐
+        var audio = document.getElementById("audio");
+        audio.src="./assets/media/music.m4a";
+        audio.play();
+      }
+    </script>
+    <audio id="audio" src=""></audio>
+    <div class="snow-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./assets/js/snowy.js"></script>
+  </body>
+</html>
